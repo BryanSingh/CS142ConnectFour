@@ -34,6 +34,7 @@ One thing to be noted. /playground
 ```
 Is used to test code. Code that is in this director is meerly used for testing, and nothing more. Code might be developed in that directory and then merged into it's respected source file.
 
+Tested with Travis C.I.
 ## How to run from command line
 This is shown on a Unix based system.
 ```
