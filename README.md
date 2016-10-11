@@ -2,7 +2,7 @@
 * Languae Java
 
 ## Authors
-* Bryan Sigh
+* Bryan Singh
 * Hans Pistor
 
 ## About
@@ -20,17 +20,19 @@ Directory structure:
 ```
 This is how the Conenct Four Project will be devleoped.
 
-One thing to be noted. 'example.java'
+One thing to be noted. /playground
 ```
 ├── CS142ConnectFour/
 │   ├── src
 │       ├── playground
-            ├── example.java
+            ├── Controller
+            ├── View
+            ├── Model
 │       ├── Controller
 |       ├── View
         ├── Model
 ```
-Is used to test code. Code that is on that file is meerly used for testing, and nothing more. Code might be devleoped in that file and then merged into it's respected source file.
+Is used to test code. Code that is in this director is meerly used for testing, and nothing more. Code might be developed in that directory and then merged into it's respected source file.
 
 ## How to run from command line
 This is shown on a Unix based system.
