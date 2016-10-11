@@ -2,6 +2,7 @@ package playground;
 
 /**
  * @author Bryan Singh
+ * @version 1.0
  */
 
 import javax.swing.*;
@@ -12,20 +13,20 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class example {
-    JFrame bulkFrame;
+    private JFrame bulkFrame;
 
-    JButton quickGameButton;
-    JButton newUserButton;
-    JButton logInButton;
+    private JButton quickGameButton;
+    private JButton newUserButton;
+    private JButton logInButton;
 
-    JLabel mainGameTitle;
-    JLabel quickGameTitle;
-    JLabel newUserTtitle;
-    JLabel userLogIn;
+    private JLabel mainGameTitle;
+    private JLabel quickGameTitle;
+    private JLabel newUserTtitle;
+    private JLabel userLogIn;
 
-    JPanel panelMainView;
+    private JPanel panelMainView;
 
-    JTextField username;
+    private JTextField username;
 
     example() {
         framesetup();
@@ -52,32 +53,17 @@ public class example {
         bulkFrame.setVisible(true);
     }
 
-    public int fakeMainMethod() {
+    private int fakeMainMethod() {
         //username = new JTextField();
         quickGameButton = new JButton("Quick Game");
 
-        quickGameButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                quickGame();
-            }
-        });
+        quickGameButton.addActionListener(e -> quickGame());
 
         newUserButton = new JButton("Sign Up");
-        newUserButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                newUser();
-            }
-        });
+        newUserButton.addActionListener(e -> newUser());
 
         logInButton = new JButton("Log In");
-        logInButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                logIn();
-            }
-        });
+        logInButton.addActionListener(e -> logIn());
 
         panelMainView.add(quickGameButton);
         panelMainView.add(newUserButton);
@@ -86,17 +72,17 @@ public class example {
         return 0;
     }
 
-    public int quickGame() {
+    private int quickGame() {
         quickGameButton.setText("Quick Game Play");
         return 0;
     }
 
-    public int newUser(){
+    private int newUser(){
         newUserButton.setText("Signing Up");
         return 0;
     }
 
-    public int logIn() {
+    private int logIn() {
         logInButton.setText("Please Log In");
         return 0;
     }
