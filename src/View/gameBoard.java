@@ -1,18 +1,15 @@
-package playground;
-
-/**
- * @author Bryan Singh
- * @version 1.0
+package View;
+/*
+  @author Bryan Singh
+  @version 1.0
  */
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class example {
+public class gameBoard {
     private JFrame bulkFrame;
 
     private JButton quickGameButton;
@@ -28,7 +25,7 @@ public class example {
 
     private JTextField username;
 
-    example() {
+    public gameBoard() {
         framesetup();
     }
 
@@ -53,7 +50,7 @@ public class example {
         bulkFrame.setVisible(true);
     }
 
-    private int fakeMainMethod() {
+    public int fakeMainMethod() {
         //username = new JTextField();
         quickGameButton = new JButton("Quick Game");
 
@@ -85,10 +82,5 @@ public class example {
     private int logIn() {
         logInButton.setText("Please Log In");
         return 0;
-    }
-
-    public static void main (String args[]) {
-        example object = new example();
-        object.fakeMainMethod();
     }
 }

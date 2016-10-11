@@ -1,11 +1,10 @@
+import View.gameBoard;
+
 import javax.swing.*;
 
-/**
- * Created by BryanSingh on 10/10/16.
- */
 public class player extends gameBoard {
 
-    String user_name = null;
+    private String user_name = null;
 
     public String get_user_name(){
 
