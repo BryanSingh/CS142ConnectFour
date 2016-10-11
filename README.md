@@ -1,4 +1,5 @@
 # CS142ConnectFour
+[![Build Status](https://travis-ci.com/BryanSingh/CS142ConnectFour.svg?token=PF2qcUea3eeVWpKu5HtM&branch=master)](https://travis-ci.com/BryanSingh/CS142ConnectFour)
 * Languae Java
 
 ## Authors
