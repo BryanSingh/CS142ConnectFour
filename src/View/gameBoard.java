@@ -4,6 +4,7 @@ package View;
   @version 1.0
  */
 
+// TODO: NEED TO ADD HIDE/SHOW METHODS FOR OPTIONS
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
