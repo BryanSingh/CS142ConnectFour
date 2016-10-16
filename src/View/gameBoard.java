@@ -5,7 +5,7 @@ package View;
  */
 
 // TODO: NEED TO ADD HIDE/SHOW METHODS FOR OPTIONS
-import playground.Model.PieceType;
+import Model.PieceType;
 
 import javax.swing.*;
 import java.awt.*;
