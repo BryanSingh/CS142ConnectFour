@@ -5,6 +5,7 @@ package View;
  */
 
 // TODO: NEED TO ADD HIDE/SHOW METHODS FOR OPTIONS
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -32,6 +33,7 @@ public class gameBoard {
 
     private void framesetup() {
         bulkFrame = new JFrame("CS142 - Connect Four Game");
+        userLogIn object_example = new userLogIn();
         // bulkFrame.setSize(400,400);
 
         // Some reason this is very slow
@@ -82,6 +84,25 @@ public class gameBoard {
 
     private int logIn() {
         logInButton.setText("Please Log In");
+        final JFrame frame = new JFrame("Connect Four Login");
+        final JButton loginButton = new JButton("Please login.");
+
+        loginButton.addActionListener(
+                e -> {
+                    loginWindow loginDlg = new loginWindow(frame);
+                    loginDlg.setVisible(true);
+                    // if logon successfully
+                    if(loginDlg.isCorrect()){
+                        loginButton.setText("Hi " + loginDlg.getUsername() + "!");
+                    }
+                });
+
+        // TODO NEED TO ADD CLOSE WINDOW ONLY CLOSES THE LOGIN WINDOW
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setSize(300, 100);
+        frame.setLayout(new FlowLayout());
+        frame.getContentPane().add(loginButton);
+        frame.setVisible(true);
         return 0;
     }
 }

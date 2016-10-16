@@ -21,7 +21,7 @@ class loginWindow extends JDialog {
     private JButton cancle_button;
     private boolean correct;
 
-    public loginWindow(Frame parent) {
+    loginWindow(Frame parent) {
         super(parent, "Login", true);
         //
         JPanel panel = new JPanel(new GridBagLayout());
@@ -90,7 +90,7 @@ class loginWindow extends JDialog {
         setLocationRelativeTo(parent);
     }
 
-    private String getUsername() {
+    String getUsername() {
         return user.getText().trim();
     }
 
@@ -98,7 +98,7 @@ class loginWindow extends JDialog {
         return new String(usr_passwd.getPassword());
     }
 
-    public boolean isCorrect() {
+    boolean isCorrect() {
         return correct;
     }
 
