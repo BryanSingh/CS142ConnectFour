@@ -1,0 +1,16 @@
+/.classpath
+/.coveralls.yml
+/.idea/
+/.project
+/.travis.yml
+/Main.class
+/README.md
+/View/
+/connect_four.iml
+/credentials.csv
+/credentials.txt
+/credentials.xml
+/out/
+/player.class
+/playground/
+/tests/
