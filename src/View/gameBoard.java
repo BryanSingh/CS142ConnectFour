@@ -5,6 +5,7 @@ package View;
  */
 
 // TODO: NEED TO ADD HIDE/SHOW METHODS FOR OPTIONS
+import playground.Model.PieceType;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,6 +13,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class gameBoard {
+
+    private PieceType[][] gameMatrix;
+
     private JFrame bulkFrame;
 
     private JButton quickGameButton;
@@ -24,6 +28,7 @@ public class gameBoard {
     private JLabel userLogIn;
 
     private JPanel panelMainView;
+    private JPanel panelGameView;
 
     private JTextField username;
 
@@ -72,8 +77,25 @@ public class gameBoard {
         return 0;
     }
 
+    private int startGame() {
+        startGame(6, 7);
+
+        return 0;
+    }
+
+    private int startGame(int row, int col) {
+        Dimension gameDim = new Dimension(150 * row , 150 * col);
+        panelGameView = new JPanel();
+        bulkFrame.remove(panelMainView);
+        bulkFrame.setPreferredSize(gameDim);
+        bulkFrame.setSize(gameDim);
+        bulkFrame.add(panelGameView);
+        return 0;
+    }
+
     private int quickGame() {
         quickGameButton.setText("Quick Game Play");
+        startGame();
         return 0;
     }
 
