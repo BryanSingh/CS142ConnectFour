@@ -27,8 +27,9 @@ public class Player
         } else {
             name = DEFAULT_NAME;
         }
+
 		//Regex test non digits or whitespace, and at least one character
-		if(name.matches("^[^\\d\\s]+$")) {
+		if(name.matches("^[^\\s]+$")) {
 			System.out.print("Yes");
 			// The string is not valid.
 			return true;
