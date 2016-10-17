@@ -5,6 +5,7 @@ package View;
  */
 
 // TODO: NEED TO ADD HIDE/SHOW METHODS FOR OPTIONS
+import Model.PanelGameView;
 import Model.PieceType;
 
 import javax.swing.*;
@@ -85,11 +86,12 @@ public class gameBoard {
 
     private int startGame(int row, int col) {
         Dimension gameDim = new Dimension(150 * row , 150 * col);
-        panelGameView = new JPanel();
+        panelGameView = new PanelGameView(gameDim);
         bulkFrame.remove(panelMainView);
         bulkFrame.setPreferredSize(gameDim);
         bulkFrame.setSize(gameDim);
         bulkFrame.add(panelGameView);
+        System.out.println(panelGameView.getSize().toString());
         return 0;
     }
 
