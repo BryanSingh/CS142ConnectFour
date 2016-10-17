@@ -13,7 +13,7 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class gameBoard {
+public class gameBoard{
 
     private PieceType[][] gameMatrix;
 
@@ -29,7 +29,7 @@ public class gameBoard {
     private JLabel userLogIn;
 
     private JPanel panelMainView;
-    private JPanel panelGameView;
+    private PanelGameView panelGameView;
 
     private JTextField username;
 
@@ -56,6 +56,7 @@ public class gameBoard {
         panelMainView.setLayout(new FlowLayout());
         bulkFrame.add(panelMainView);
         bulkFrame.pack();
+        bulkFrame.setLocationRelativeTo(null);
         bulkFrame.setVisible(true);
     }
 
@@ -90,7 +91,7 @@ public class gameBoard {
         bulkFrame.remove(panelMainView);
         bulkFrame.setSize(gameDim);
         bulkFrame.add(panelGameView);
-        System.out.println(panelGameView.getSize().toString());
+        panelGameView.drawCircle();
         return 0;
     }
 

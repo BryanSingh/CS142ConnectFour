@@ -12,23 +12,42 @@ import java.io.File;
 public class PanelGameView extends JPanel {
 
     private Dimension gameDim;
+    private final int XOFFSET = 100;
+    private final int YOFFSET = 100;
+    private JButton[] buttons;
+
+    Graphics2D g;
 
     public PanelGameView(Dimension dim) {
         super(null);
+        buttons = new JButton[6*7];
         this.gameDim = dim;
         this.setPreferredSize(gameDim);
         this.setSize(gameDim);
         this.setMinimumSize(gameDim);
-        System.out.println("Max size:\t" + this.getSize().getHeight());
+
+
 
     }
 
     @Override
     public void paintComponent(Graphics g) {
         this.setSize(gameDim);
-        for (int y = 0; y < this.getSize().getHeight(); y+=150) {
-            g.drawLine(0, y, (int)this.getSize().getWidth(), y);
-            System.out.println(y + "\t max: " + (int)this.getSize().getHeight());
+        this.g = (Graphics2D)g;
+        for (int y = YOFFSET; y <= 600+YOFFSET; y+=100) {
+            g.drawLine(XOFFSET, y, 700+XOFFSET, y);
+        }
+
+        for (int x = XOFFSET; x <= 700+XOFFSET; x+=100) {
+            g.drawLine(x, YOFFSET, x, 600+YOFFSET);
+        }
+    }
+
+    public void drawCircle() {
+        if (g == null) {
+            System.out.println("g is null");
+        } else {
+            g.fillOval(150, 150, 150, 150);
         }
     }
 
