@@ -1,19 +1,36 @@
 package Model;
 
-public enum PieceType 
+import java.awt.*;
+
+public enum PieceType
 {
-	RED ("Red"),
-	BLACK ("Black"),
-	GREEN ("Green"),
-	YELLOW ("Yellow");
-    
+	RED ("RED"),
+	BLACK ("BLACK"),
+	GREEN ("GREEN"),
+	YELLOW ("YELLOW");
+
+    private String type;
+
     private PieceType(String type) 
     {
-    	
+    	this.type = type;
     }
     
     public String getType()
+
     {
-    	return null;
+    	return this.type;
+    }
+
+    public Color getColor() {
+        if (type.equals("RED")) {
+            return Color.RED;
+        } else if (type.equals("GREEN")) {
+            return Color.GREEN;
+        } else if (type.equals("YELLOW")) {
+            return Color.YELLOW;
+        } else {
+            return Color.BLACK;
+        }
     }
 }

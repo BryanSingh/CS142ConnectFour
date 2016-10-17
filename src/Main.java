@@ -1,4 +1,4 @@
-import View.gameBoard;
+import View.GameBoard;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 public class Main {
     //Quick Comment for testing purpose
     public static void main(String args[]) {
-        gameBoard object = new gameBoard();
+        GameBoard object = new GameBoard();
         object.fakeMainMethod();
 
     }

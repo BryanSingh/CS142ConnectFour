@@ -7,7 +7,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import View.gameBoard;
+import View.GameBoard;
 import java.util.Vector;
 
 /**
@@ -15,21 +15,31 @@ import java.util.Vector;
  */
 public class PanelGameView extends JPanel {
 
-    public Vector<Piece> shapesToDraw;
-    private gameBoard gameBoard;
+
     private PieceType[][] gameMatrix;
+    private Vector<Player> players;
+    private Player playerUp;
+    public Vector<Piece> shapesToDraw;
     private Dimension gameDim;
     private final int XOFFSET = 100;
     private final int YOFFSET = 100;
+    private final int ROWS = 6;
+    private final int COLUMNS = 7;
     private JButton[] buttons;
 
 
-    public PanelGameView(Dimension dim, gameBoard gameBoard) {
+    public PanelGameView(Dimension dim) {
         super(null);
-        this.gameBoard = gameBoard;
-        this.gameMatrix = gameBoard.getGameMatrix();
+        Dimension gameDim = new Dimension(150 * ROWS , 150 * COLUMNS);
+        gameMatrix = new PieceType[ROWS][COLUMNS];
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLUMNS; j++) {
+                gameMatrix[i][j] = null;
+            }
+        }
         shapesToDraw = new Vector<Piece>();
         buttons = new JButton[6*7];
+        players = new Vector<Player>();
         this.gameDim = dim;
         this.setPreferredSize(gameDim);
         this.setSize(gameDim);
@@ -43,22 +53,29 @@ public class PanelGameView extends JPanel {
                     return;
                 }
                 int col = getCol(e.getX());
+                System.out.println("Check 1");
                 int row = -1;
-                int x = XOFFSET + col * 100 + 50;
-                for (int i = 0; i < gameMatrix[0].length; i++) {
+                int x = XOFFSET + (col * 100);
+                System.out.println(col);
+                for (int i = 0; i < ROWS; i++) {
+                    System.out.println("row " + i);
                     if (gameMatrix[i][col] == null) {
                         row = i;
+                        gameMatrix[row][col] = getPlayerUp().getPieceType();
                         break;
                     }
                 }
+                System.out.println("Check 2");
                 if (row < 0) {
 
                     return;
                 }
-                int y = YOFFSET + row*100 + 50;
+                int y = (YOFFSET + 500) -  row*100;
                 System.out.println("row, col : ("+ row +", " + col + ")");
                 System.out.println("x, y : (" + x +", " + y +")");
-                shapesToDraw.add(new Piece(x, y, 2, col, ));
+                shapesToDraw.add(new Piece(x, y, 2, col, getPlayerUp().getPieceType()));
+                repaint();
+                switchPlayer();
             }
         });
     }
@@ -88,6 +105,7 @@ public class PanelGameView extends JPanel {
         }
 
         for (Piece p: shapesToDraw) {
+            g.setColor(p.type.getColor());
             g.fillOval(p.x, p.y, p.diameter, p.diameter);
         }
     }
@@ -95,17 +113,35 @@ public class PanelGameView extends JPanel {
     class Piece {
 
         public int row, col, diameter, x, y;
-        public Player player;
+        public PieceType type;
 
-        public Piece(int x, int y, int row, int col, Player player) {
+        public Piece(int x, int y, int row, int col, PieceType type) {
             this.x=x;
             this.y=y;
             this.row = row;
-            this.player = player;
+            this.type = type;
             this.col = col;
             this.diameter = 100;
+            System.out.println(type.getColor());
+            System.out.println(type.getType());
         }
 
+    }
+
+
+
+    public Player getPlayerUp() {
+        return playerUp;
+    }
+
+    public PieceType[][] getGameMatrix() {
+        return this.gameMatrix;
+    }
+
+    public void switchPlayer() {
+        System.out.println(playerUp.getName());
+        playerUp = players.get((players.indexOf(playerUp) + 1 ) % 2);
+        System.out.println(playerUp.getName());
     }
 
 

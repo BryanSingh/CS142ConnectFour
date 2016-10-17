@@ -1,10 +1,10 @@
-import View.gameBoard;
+import View.GameBoard;
 
 import javax.swing.*;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
-public class player extends gameBoard {
+public class player extends GameBoard {
 
     private String user_name = null;
 
