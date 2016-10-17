@@ -29,7 +29,7 @@ public class Player
         }
 
 		//Regex test non digits or whitespace, and at least one character
-		if(name.matches("^[^\\s]+$")) {
+		if(name.matches("^[^\\.\\s]+$")) {
 			System.out.print("Yes");
 			// The string is not valid.
 			return true;
