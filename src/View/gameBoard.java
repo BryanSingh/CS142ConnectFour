@@ -87,12 +87,16 @@ public class gameBoard{
 
     private int startGame(int row, int col) {
         Dimension gameDim = new Dimension(150 * row , 150 * col);
-        panelGameView = new PanelGameView(gameDim);
+        gameMatrix = new PieceType[row][col];
+        panelGameView = new PanelGameView(gameDim, this);
         bulkFrame.remove(panelMainView);
         bulkFrame.setSize(gameDim);
         bulkFrame.add(panelGameView);
-        panelGameView.drawCircle();
         return 0;
+    }
+
+    public PieceType[][] getGameMatrix {
+        return gameMatrix;
     }
 
     private int quickGame() {
@@ -105,6 +109,7 @@ public class gameBoard{
         newUserButton.setText("Signing Up");
         return 0;
     }
+
 
     private int logIn() {
         logInButton.setText("Please Log In");
