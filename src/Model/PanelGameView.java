@@ -1,13 +1,9 @@
 package Model;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import View.GameBoard;
 import java.util.Vector;
 
 /**
@@ -21,17 +17,30 @@ public class PanelGameView extends JPanel {
     private Player playerUp;
     public Vector<Piece> shapesToDraw;
     private Dimension gameDim;
+
+
     private final int XOFFSET = 100;
     private final int YOFFSET = 100;
-    private final int ROWS = 6;
-    private final int COLUMNS = 7;
+    private int rows = 6;
+    private int columns = 7;
+    private final int SIZE = 100;
+    private int maxDistanceX;
+    private int maxDistanceY;
 
     public PanelGameView(Dimension dim) {
+        this(dim, 6, 7);
+    }
+
+    public PanelGameView(Dimension dim, int rows, int columns) {
         super(null);
-        Dimension gameDim = new Dimension(150 * ROWS , 150 * COLUMNS);
-        gameMatrix = new PieceType[ROWS][COLUMNS];
-        for (int i = 0; i < ROWS; i++) {
-            for (int j = 0; j < COLUMNS; j++) {
+        this.rows = rows;
+        this.columns = columns;
+        this.maxDistanceX = XOFFSET + (SIZE * columns);
+        this.maxDistanceY = YOFFSET + (SIZE * rows);
+        Dimension gameDim = new Dimension(150 * rows, 150 * columns);
+        gameMatrix = new PieceType[rows][columns];
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
                 gameMatrix[i][j] = null;
             }
         }
@@ -51,14 +60,14 @@ public class PanelGameView extends JPanel {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 System.out.println("Mouse clicked at: " + e.getX() +", " + e.getY());
-                if (e.getX() < XOFFSET || e.getX() > 700+XOFFSET || e.getY() < YOFFSET || e.getY() > 600+YOFFSET) {
+                if (e.getX() < XOFFSET || e.getX() > maxDistanceX || e.getY() < YOFFSET || e.getY() > maxDistanceY) {
                     return;
                 }
                 int col = getCol(e.getX());
                 System.out.println("Check 1");
                 int row = -1;
                 int x = XOFFSET + (col * 100);
-                for (int i = 0; i < ROWS; i++) {
+                for (int i = 0; i < rows; i++) {
                     System.out.println("row " + i);
                     if (gameMatrix[i][col] == null) {
                         row = i;
@@ -83,7 +92,7 @@ public class PanelGameView extends JPanel {
 
     private int getCol(int x) {
         int col = 0;
-        for (int i = XOFFSET; i <= 700+XOFFSET; i+=100) {
+        for (int i = XOFFSET; i <= maxDistanceX; i+=100) {
             if (x > i) {
                 col++;
             } else {
@@ -97,12 +106,12 @@ public class PanelGameView extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         this.setSize(gameDim);
-        for (int y = YOFFSET; y <= 600+YOFFSET; y+=100) {
-            g.drawLine(XOFFSET, y, 700+XOFFSET, y);
+        for (int y = YOFFSET; y <= maxDistanceY; y+=100) {
+            g.drawLine(XOFFSET, y, maxDistanceX, y);
         }
 
-        for (int x = XOFFSET; x <= 700+XOFFSET; x+=100) {
-            g.drawLine(x, YOFFSET, x, 600+YOFFSET);
+        for (int x = XOFFSET; x <= maxDistanceX; x+=100) {
+            g.drawLine(x, YOFFSET, x, maxDistanceY);
         }
 
         for (Piece p: shapesToDraw) {
