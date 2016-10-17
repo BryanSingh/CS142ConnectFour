@@ -22,6 +22,12 @@ public class Player
 
 	private boolean validateName(String name) 
 	{
+        if (name != null && !name.isEmpty()) {
+            return true;
+        } else {
+            name = DEFAULT_NAME;
+        }
+		//Regex test non digits or whitespace, and at least one character
 		if(name.matches("^[^\\d\\s]+$")) {
 			System.out.print("Yes");
 			// The string is not valid.
@@ -31,6 +37,7 @@ public class Player
 			System.out.print("No");
 			return false;
 		}
+
 	}
 
 	public void incrementScore() 
