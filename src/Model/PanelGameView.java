@@ -13,20 +13,20 @@ public class PanelGameView extends JPanel {
 
     private Dimension gameDim;
 
-    private BufferedImage bgImage;
-
     public PanelGameView(Dimension dim) {
         super(null);
         this.gameDim = dim;
         this.setPreferredSize(gameDim);
         this.setSize(gameDim);
-        System.out.println("Max size:\t" + this.getSize());
+        this.setMinimumSize(gameDim);
+        System.out.println("Max size:\t" + this.getSize().getHeight());
 
     }
 
     @Override
     public void paintComponent(Graphics g) {
-        for (int y = 0; y < gameDim.getHeight(); y+=150) {
+        this.setSize(gameDim);
+        for (int y = 0; y < this.getSize().getHeight(); y+=150) {
             g.drawLine(0, y, (int)this.getSize().getWidth(), y);
             System.out.println(y + "\t max: " + (int)this.getSize().getHeight());
         }

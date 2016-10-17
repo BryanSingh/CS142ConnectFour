@@ -88,7 +88,6 @@ public class gameBoard {
         Dimension gameDim = new Dimension(150 * row , 150 * col);
         panelGameView = new PanelGameView(gameDim);
         bulkFrame.remove(panelMainView);
-        bulkFrame.setPreferredSize(gameDim);
         bulkFrame.setSize(gameDim);
         bulkFrame.add(panelGameView);
         System.out.println(panelGameView.getSize().toString());
