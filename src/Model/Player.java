@@ -22,13 +22,15 @@ public class Player
 
 	private boolean validateName(String name) 
 	{
-        String base = "JOHNCENA";
-
-        final Pattern pattern = Pattern.compile("^[A-Za-z, ]++$");
-        if (!pattern.matcher(name).matches()) {
-            return false;
-        }
-        return true;
+		if(name.matches("^[^\\d\\s]+$")) {
+			System.out.print("Yes");
+			// The string is not valid.
+			return true;
+		} else {
+			// The string is not valid.
+			System.out.print("No");
+			return false;
+		}
 	}
 
 	public void incrementScore() 
