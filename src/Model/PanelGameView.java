@@ -25,8 +25,6 @@ public class PanelGameView extends JPanel {
     private final int YOFFSET = 100;
     private final int ROWS = 6;
     private final int COLUMNS = 7;
-    private JButton[] buttons;
-
 
     public PanelGameView(Dimension dim) {
         super(null);
@@ -37,9 +35,13 @@ public class PanelGameView extends JPanel {
                 gameMatrix[i][j] = null;
             }
         }
+        Player player = new Player("Player", PieceType.RED);
         shapesToDraw = new Vector<Piece>();
-        buttons = new JButton[6*7];
         players = new Vector<Player>();
+        players.add(player);
+        players.add(new ComputerPlayer("Computer Player", PieceType.BLACK));
+        playerUp = player;
+
         this.gameDim = dim;
         this.setPreferredSize(gameDim);
         this.setSize(gameDim);
@@ -56,7 +58,6 @@ public class PanelGameView extends JPanel {
                 System.out.println("Check 1");
                 int row = -1;
                 int x = XOFFSET + (col * 100);
-                System.out.println(col);
                 for (int i = 0; i < ROWS; i++) {
                     System.out.println("row " + i);
                     if (gameMatrix[i][col] == null) {
@@ -110,6 +111,21 @@ public class PanelGameView extends JPanel {
         }
     }
 
+    public Player getPlayerUp() {
+        return playerUp;
+    }
+
+    public PieceType[][] getGameMatrix() {
+        return this.gameMatrix;
+    }
+
+    public void switchPlayer() {
+        System.out.println(playerUp.getName());
+        playerUp = players.get((players.indexOf(playerUp) + 1 ) % 2);
+        System.out.println(playerUp.getName());
+    }
+
+
     class Piece {
 
         public int row, col, diameter, x, y;
@@ -130,19 +146,6 @@ public class PanelGameView extends JPanel {
 
 
 
-    public Player getPlayerUp() {
-        return playerUp;
-    }
-
-    public PieceType[][] getGameMatrix() {
-        return this.gameMatrix;
-    }
-
-    public void switchPlayer() {
-        System.out.println(playerUp.getName());
-        playerUp = players.get((players.indexOf(playerUp) + 1 ) % 2);
-        System.out.println(playerUp.getName());
-    }
 
 
 }
